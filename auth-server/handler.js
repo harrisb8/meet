@@ -35,6 +35,7 @@ const credentials = {
   redirect_uris: ["https://harrisb8.github.io/meet/"],
   javascript_origins: ["https://harrisb8.github.io", "http://localhost:3000"],
 };
+
 const { client_secret, client_id, redirect_uris, calendar_id } = credentials;
 const oAuth2Client = new google.auth.OAuth2(
   client_id,
@@ -58,7 +59,7 @@ module.exports.getAccessToken = async (event) => {
   const code = decodeURIComponent(`${event.pathParameters.code}`);
 
   return new Promise((resolve, reject) => {
-    oAuth2Client.getToken(code, (err, token) => {
+    oAuth2Client.setCredentials(code, (err, token) => {
       if (err) {
         return reject(err);
       }
@@ -88,4 +89,20 @@ module.exports.getAccessToken = async (event) => {
       authUrl: authUrl,
     }),
   };
-};
+
+ calendar.events.list(
+   {
+     calendarId: calendar_id,
+     auth: oAuth2Client,
+     timeMin: new Date().toISOString(),
+     singleEvents: true,
+     orderBy: "startTime",
+   },
+   (error, response) => {
+     if (error) {
+       reject(error);
+     } else {
+       resolve(response);
+     }
+   }
+  };
