@@ -73,6 +73,7 @@ module.exports.getAccessToken = async (event) => {
   const code = decodeURIComponent(`${event.pathParameters.code}`);
 
   return new Promise((resolve, reject) => {
+  
     oAuth2Client.getToken(code, (err, token) => {
       if (err) {
         return reject(err);
@@ -94,16 +95,7 @@ module.exports.getAccessToken = async (event) => {
         };
       });
 };
-  return {
-    statusCode: 200,
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-    },
-    body: JSON.stringify({
-    }),
-  };
-
- 
+  
   module.exports.getCalendarEvents = event => {
 
       const oAuth2Client = new google.auth.OAuth2(
