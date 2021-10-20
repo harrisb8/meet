@@ -66,25 +66,21 @@ provider:
 
 functions:
   getAuthURL:
-    handler: handler.get.AuthURL
+    handler: handler.getAuthURL
     events:
         - http:
-          path: api/get-auth-url
-          method: get
-
-functions:
-  getAuthURL:
+            path: api/get-auth-url
+            method: get
+  getAccessToken:
     handler: handler.getAccessToken
     events:
-        - http:
+      - http:
           path: api/token/{code}
           method: get
-
-functions:
-  getAuthURL:
+  getCalendarEvents:
     handler: handler.getCalendarEvents
     events:
-        - http:
+      - http:
           path: api/get-events/{access_token}
           method: get
 #    The following are a few example events you can configure
