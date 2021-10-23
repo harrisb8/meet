@@ -193,7 +193,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/auth-server/dev/1634865162187-2021-10-22T01:12:42.187Z/auth-server.zip"
+                "S3Key": "serverless/auth-server/dev/1634867475759-2021-10-22T01:51:15.759Z/auth-server.zip"
               },
               "Handler": "handler.getAuthURL",
               "Runtime": "nodejs12.x",
@@ -226,7 +226,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/auth-server/dev/1634865162187-2021-10-22T01:12:42.187Z/auth-server.zip"
+                "S3Key": "serverless/auth-server/dev/1634867475759-2021-10-22T01:51:15.759Z/auth-server.zip"
               },
               "Handler": "handler.getAccessToken",
               "Runtime": "nodejs12.x",
@@ -259,7 +259,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/auth-server/dev/1634865162187-2021-10-22T01:12:42.187Z/auth-server.zip"
+                "S3Key": "serverless/auth-server/dev/1634867475759-2021-10-22T01:51:15.759Z/auth-server.zip"
               },
               "Handler": "handler.getCalendarEvents",
               "Runtime": "nodejs12.x",
@@ -540,7 +540,7 @@
               "GetCalendarEventsLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1634865038413": {
+          "ApiGatewayDeployment1634867376261": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -893,7 +893,7 @@
     "artifact": "C:\\Users\\harri\\Documents\\meet\\auth-server\\.serverless\\auth-server.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/auth-server/dev/1634865162187-2021-10-22T01:12:42.187Z",
+    "artifactDirectoryName": "serverless/auth-server/dev/1634867475759-2021-10-22T01:51:15.759Z",
     "artifact": "auth-server.zip"
   }
 }
