@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import EventList from '../EventList';
+import EventList from '../EventList.js';
 import Event from '../Event';
 
 describe('<EventList /> component', () => {
