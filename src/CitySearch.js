@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 
+state = {
+    query: '',
+  }
+
 class CitySearch extends Component {
     render() {
         return (
@@ -7,6 +11,7 @@ class CitySearch extends Component {
                 <input
                     type="text"
                     className="city"
+                    value={this.state.query}
                 />
                 <ul className="suggestions">
                     
