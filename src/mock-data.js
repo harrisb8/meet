@@ -63,11 +63,11 @@ const mockData = [
 },
 "start": {
 "dateTime": "2020-05-20T14:00:00+02:00",
-"timeZone": "Europe/Berlin";
+"timeZone": "Europe/Berlin"
 },
 "end": {
 "dateTime": "2020-05-20T15:00:00+02:00",
-"timeZone": "Europe/Berlin";
+"timeZone": "Europe/Berlin"
 },
 "recurringEventId": "3qtd6uscq4tsi6gc7nmmtpqlct",
 "originalStartTime": {
@@ -79,7 +79,7 @@ const mockData = [
 "reminders": {
 "useDefault": true
 },
-"eventType": "default";
+"eventType": "default"
 },
 
 ];
