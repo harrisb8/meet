@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
+import { getEvents } from './api';
 
 class App extends Component {
   state = {
@@ -18,6 +19,15 @@ class App extends Component {
         </div>
       );
     } 
+  }
+
+  updateEvents = (location) => {
+    getEvents().then((events) => {
+      const locationEvents = events.filter((event) => event.location === location);
+      this.setState({
+        events: locationEvents
+      });
+    });
   }
 }
 export default App;
