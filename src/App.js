@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import './App.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
+import NumberOfEvent from './NumberOfEvent';
 import { extractLocations, getEvents } from './api';
 
 class App extends Component {
   state = {
     events: [],
-    locations: []
+    locations: [],
   }
 
   class App extends Component {
@@ -38,8 +39,8 @@ class App extends Component {
     componentWillUnmount(){
       this.mounted = false;
     }
-    
-  updateEvents = (location) => {
+
+  updateEvents = (location, eventCount) => {
     getEvents().then((events) => {
       const locationEvents = (location === 'all') ?
         events :
