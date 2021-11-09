@@ -12,6 +12,16 @@ const checkToken = async (accessToken) => {
     return result;
 };
 
+const checkToken = async (accessToken) => {
+  const result = await fetch(
+    `https://ww.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
+  )
+  .then((res) => res.json())
+  .catch((error) => error.json());
+
+  return result;
+};
+
 export const getEvents = async () => {
   return mockData;
 };
@@ -32,7 +42,7 @@ export const extractLocations = (events) => {
       const code = await seacrchParams.get("code");
       if (!code) {
         const results = await axios.get(
-          "YOUR_SERVERLESS_GET_AUTH_URL_ENDPOINT"
+          "https://accounts.google.com/o/oauth2/auth/api/get-auth-url"
         );
         const { authUrl } = results.data;
         return (window.location.href = authUrl);
