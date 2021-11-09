@@ -71,3 +71,31 @@ export const extractLocations = (events) => {
     }
       return accessToken;
   }
+
+const getToken = async (code) => {
+  const encodeCode = encodeURIComponent(code);
+  const { access_token } = await fetch(
+   'https://accounts.google.com/o/oauth2/auth/api/token' + '/' + encodeCode 
+  )
+    .then((res) => {
+      return res.json();
+    })
+    .catch((error) => error);
+
+    access_token && localStorage.setItem("access_token", access_token)
+}
+
+  const removeQuery = () => {
+    if (window.history.pushState && window.location.pathname) {
+      var newurl =
+        window.location.protocol +
+        "//" +
+        window.location.host +
+        window.location.pathname;
+        window.history.pushState("", "", newurl);
+     } else {
+       newurl = window.location.protocol + "//" + window.location.host;
+       window.history.pushState("", "", newurl);
+     }
+   };
+  }
