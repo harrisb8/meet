@@ -12,7 +12,7 @@ describe('<Event /> component', () => {
     })
 
     test('show details on expansion', () => {
-        eventWrapper.setState({collasped: true})
+        let eventWrapper.setState({collasped: true});
         expect(eventWrapper.find(".event-description").hasClass("d-none").toEqual(true))
     });
 });
