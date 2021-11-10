@@ -1,5 +1,5 @@
 import { mockData } from './mock-data';
-import axios form 'axios';
+import axios from 'axios';
 
 
 const checkToken = async (accessToken) => {
@@ -10,16 +10,6 @@ const checkToken = async (accessToken) => {
     .catch((error) => error.json());
 
     return result;
-};
-
-const checkToken = async (accessToken) => {
-  const result = await fetch(
-    `https://ww.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
-  )
-  .then((res) => res.json())
-  .catch((error) => error.json());
-
-  return result;
 };
 
 export const getEvents = async () => {
