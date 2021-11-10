@@ -13,21 +13,7 @@ class App extends Component {
   };
 
  // class App extends Component {
-    render() {
-      return (
-        <div className="App">
-          <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
-          <EventList events={this.state.events} />
-          <NumberOfEvent numberOfEvent={this.state.numberOfEvent} />
-        </div>
-      );
-    } 
-  }
-    componentDidMount() {
-      getEvents().then((events) => {
-        this.setState({ events, locations: extractLocations(events) });
-      });
-    }
+    
 
     componentDidMount() {
       this.mounted = true;
@@ -37,6 +23,7 @@ class App extends Component {
         }
       });
     }
+  
 
     componentWillUnmount() {
       this.mounted = false;
@@ -53,6 +40,17 @@ class App extends Component {
       });
     });
   }
+
+  render() {
+    return (
+      <div className="App">
+        <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
+        <EventList events={this.state.events} />
+        <NumberOfEvent numberOfEvent={this.state.numberOfEvent} />
+      </div>
+    );
+  } 
+};
 
 export default App;
 
