@@ -1,5 +1,7 @@
 import { mockData } from './mock-data';
 import axios from 'axios';
+import NProgress from 'nprogress';
+
 
 
 const checkToken = async (accessToken) => {
@@ -20,7 +22,7 @@ export const getEvents = async () => {
     NProgress.done();
     return mockData;
   }
-  const token = await getAccessToken();
+  const token = await getAccessToken(); 
 
   if (token) {
     removeQuery();
@@ -30,11 +32,12 @@ export const getEvents = async () => {
       var locations = extractLocations(result.data.events);
       localStorage.setItem("lastEvents", JSON.stringify(result.data));
       localStorage.setItem("locations", JSON.stringify(locations));
-    }
+    } 
     NProgress.done();
     return result.data.events;
   }
 };
+
 
 export const extractLocations = (events) => {
     var extractLocations = events.map((event) => event.location);
@@ -88,4 +91,4 @@ const getToken = async (code) => {
        window.history.pushState("", "", newurl);
      }
    };
-  }
+
