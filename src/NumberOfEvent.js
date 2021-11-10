@@ -1,12 +1,14 @@
 import { render } from 'enzyme';
 import React, { Component } from 'react';
 
-class NumberOfEvents extend Component {
+class numberOfEvent extends Component {
     render() {
-        return
-            <div className= "App">
+        return ( 
+            <div className= "numberOfEvent">
                 <h3>Number of Events</h3>
-                <EventList events={this.state.eventCount} />
             </div>
+        );
     }
 };
+
+export default numberOfEvent;
