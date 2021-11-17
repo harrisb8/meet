@@ -11,7 +11,7 @@ class Event extends Component {
 
         return <div>
             <h3>{event.summary}</h3>
-            <button onClick={() => this.setState({collasped: !this.state.collasped})}>hide details</button>
+            <button className={eventDetails} onClick={() => this.setState({collasped: !this.state.collasped})}>hide details</button>
             <div className={showDescription}>{event.description}</div>
         </div>;
     }
