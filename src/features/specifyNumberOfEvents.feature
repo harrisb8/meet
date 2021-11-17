@@ -1,6 +1,6 @@
 Feature: Specify the Number of events
 
-Scenario: When user has not specified a number, 32 is the default number. 
+Scenario: When user hasn't specified a number, 32 is the default number. 
 Given: The user has not clicked on the number of search results shown next to the actually search bar 
 When: The user enters a search 
 Then: Only 32 results are shown for that search since the user did not choose how many results they wanted to see

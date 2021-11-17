@@ -15,7 +15,7 @@ describe('<CitySearch /> component', () => {
         //const CitySearchWrapper = shallow(<CitySearch />);
         expect(CitySearchWrapper.find('.city')).toHaveLength(1);
     });
-});
+
 
     test('renders a list of suggestions', () => {
        // const CitySearchWrapper = shallow(<CitySearch />);
@@ -55,7 +55,7 @@ describe('<CitySearch /> component', () => {
         CitySearchWrapper.find(".city").simulate("change", {
           target: { value: "Berlin" },
         });
-        const query = CitySearchWrapper.state("guery");
+        const query = CitySearchWrapper.state("query");
         const filteredLocations = locations.filter((location) => {
           return location.toUpperCase().indexOf(query.toUpperCase()) > -1
         });
@@ -83,7 +83,8 @@ describe('<CitySearch /> component', () => {
         });
         CitySearchWrapper.find('.suggestions li').at(0).simulate('click');
         expect(CitySearchWrapper.state('showSuggestions')).toBe(false);
-        expect(CitySearchWrapper.find('suggestions').prop('style')).toEqual({
+        expect(CitySearchWrapper.find('.suggestions').prop('style')).toEqual({
           display: 'none' 
         });
       });
+    });

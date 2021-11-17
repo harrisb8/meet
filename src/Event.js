@@ -7,11 +7,11 @@ class Event extends Component {
 
     render() {
         const {event}=this.props;
-        const showDescription= this.state.collasped? "d-none":"",
+        const showDescription= this.state.collasped? "d-none":"";
 
         return <div>
             <h3>{event.summary}</h3>
-            <button className={eventDetails} onClick={() => this.setState({collasped: !this.state.collasped})}>hide details</button>
+            <button  onClick={() => this.setState({collasped: !this.state.collasped})}>hide details</button>
             <div className={showDescription}>{event.description}</div>
         </div>;
     }
