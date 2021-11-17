@@ -50,7 +50,7 @@ defineFeature(feature, test => {
     
         });
     
-        when('the user selects a city (e.g., “Berlin, Germany”) from the list', () => {
+        when('the user selects a city (e.g., “Berlin, Germany”)', () => {
     
         });
     
