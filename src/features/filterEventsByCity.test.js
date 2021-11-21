@@ -4,6 +4,7 @@ import App from '../App';
 import { mockData } from '../mock-data';
 import { mount, shallow } from 'enzyme';
 import CitySearch from '../CitySearch';
+import { extractLocations } from '../api';
 
 const feature = loadFeature('./src/features/filterEventsByCity.feature');
 
@@ -30,32 +31,34 @@ defineFeature(feature, test => {
         given('the main page is open', () => {
     
         });
-    
+        let AppWrapper;    
         when('the user starts typing in the city textbox', () => {
-    
+            AppWrapper = mount(<App />);
         });
     
         then('the user should receive a list of cities (suggestions) that match what they’ve typed', () => {
-    
+            AppWrapper.update();
+            expect(AppWrapper.find('events')).toHaveLength(mockData.length);
         });
       });
     
     
       test('User can select a city from the suggested list', ({ given, and, when, then }) => {
+            let CitySearchWrapper;
         given('user was typing “Berlin” in the city textbox', () => {
-    
+            CitySearchWrapper = shallow(<CitySearch updateEvents ={() => {}} locations={location} />);
         });
-    
+            
         and('the list of suggested cities is showing', () => {
     
         });
     
         when('the user selects a city (e.g., “Berlin, Germany”)', () => {
-    
+            CitySearchWrapper.find('.cty').simulate('change', { target: { value: 'Berlin'} });
         });
     
         then('their city should be changed to that city (i.e., “Berlin, Germany”)', () => {
-    
+            expect(CitySearchWrapper.find('.suggestion li')).toHaveLength();
         });
     
         and('the user should receive a list of upcoming events in that city', () => {
