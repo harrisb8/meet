@@ -23,20 +23,38 @@ defineFeature(feature, test => {
             expect(AppWrapper.find(".event")).toHaveLength (32);
         });
    });
-   
-    test('User can change the number of events they want to see.',({ given, when, then}) => {
-        given("While using the search, users can choose how many results they would like to be displayed", () => {
-            AppWrapper = mount(<App />);
-            AppWrapper.setState({numberOfEvent});
-        });
-        when("When the uses clicks on the number of search result next to the search bar", () => {
-            const numberOfEventsWrapper = AppWrapper.find(NumberOfEvent);
-            numberOfEventsWrapper
-              .find("input")
-              .simulate("change", { target: { value: 20 } });
-        })
-        then("The search results will show the amount that the user choose for it to display at one time.", () => {
-            expect(AppWrapper.state("numberOfEvents")).toEqual();
-        });
+
+   test('The user may specify the number of events to display', ({ given, when, then }) => {
+    let AppWrapper;
+    given('that the user has specified a preferred number of events,', () => {
+      AppWrapper = mount(<App />);
+      const numberObject = { target: { value: 5 } };
+      AppWrapper.find('.events').simulate('change', numberObject);
     });
+
+    when('the user receives a list of events,', () => {
+      expect(AppWrapper.find('.EventList')).toHaveLength(1);
+    });
+
+    then('that number of events will be listed.', () => {
+      AppWrapper.update();
+      expect(AppWrapper.find('.event')).toHaveLength(5);
+    });
+  });
+
+    // //test('User can change the number of events they want to see.',({ given, when, then}) => {
+    //     given("While using the search, users can choose how many results they would like to be displayed", () => {
+    //         AppWrapper = mount(<App />);
+    //         AppWrapper.setState({numberOfEvents: 5});
+    //     });
+    //     when("When the uses clicks on the number of search result next to the search bar", () => {
+    //         const numberOfEventsWrapper = AppWrapper.find(NumberOfEvent);
+    //         numberOfEventsWrapper
+    //           .find("input")
+    //           .simulate("change", { target: { value: 20 } });
+    //     })
+    //     then("The search results will show the amount that the user choose for it to display at one time.", () => {
+    //         expect(AppWrapper.state("numberOfEvents")).toEqual();
+    //     });
+    // });
 });
