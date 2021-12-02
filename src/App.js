@@ -32,14 +32,16 @@ class App extends Component {
     }
 
   updateEvents = (location, numberOfEvents) => {
+    let eventsQ = numberOfEvents || 32;
+    location = location || 'all';
     getEvents().then((events) => {
       let locationEvents = (location === 'all') ?
         events :
         events.filter((event) => event.location === location);
-        locationEvents = locationEvents.slice(0, numberOfEvents)
+        locationEvents = locationEvents.slice(0, eventsQ)
       this.setState({
         events: locationEvents,
-        numberOfEvents: 32,
+        numberOfEvents: eventsQ,
       });
     });
   }
