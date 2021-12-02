@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
 import { ErrorAlert } from './Alert';
 
+
 class numberOfEvent extends Component {
     state = {
-        numberOfEvent: 32,
+       numberOfEvent: 32,
     //changeHandler= (e) => {
       //  this.props.changeNumberOfEvents(undefined, e.target.value);
         errorText: '',
     }
 
     handleInputChange = (event) => {
-        const value = event.target.value;
+        let value =  event.target.value;
         //this.props.updateEvents(null, value);
-        this.props.updateNumberOfEvent(event.target.value);
+        this.props.updateNumberOfEvent(changeNumberOfEvents);
         this.setState({ numberOfEvent: value });
 
-        if (parseInt(value) < 0 || parseInt(value) > 32) {
+        if (parseInt(value) > 0 || parseInt(value) < 32) {
             this.setState({
                 errorText: "",
             })
@@ -34,7 +35,7 @@ class numberOfEvent extends Component {
                   className='events' 
                   value={this.props.numberOfEvent} 
                   type="number" 
-                  onChange={this.handleInputChanged}/>
+                  onChange={this.handleInputChange}/>
                 <ErrorAlert text={this.state.errorText} />
             </div>
         );
