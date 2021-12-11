@@ -23,6 +23,7 @@ export const getEvents = async () => {
     NProgress.done();
     return mockData;
   }
+  
   const token = await getAccessToken(); 
 
   if (token) {

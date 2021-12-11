@@ -5,6 +5,8 @@ class Event extends Component {
         collapsed: true
     };
 
+
+
     render() {
         const {event}=this.props;
         const showDescription= this.state.collapsed? "d-none":"";
