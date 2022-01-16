@@ -5,6 +5,7 @@ import {
 
 const EventGenre = ({ events }) => {
     const [data, setData] = useState([]);
+    const colors = ['#D696BB', '#FFC300', '#44BEC7']
     useEffect(() => { setData(() => getData()); }, [events]);
 
     const getData = () => {
