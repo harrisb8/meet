@@ -22,6 +22,7 @@ const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
 const calendar = google.calendar("v3");
 
+const headers = { "Access-Control-Allow-Origin": "*" }; 
 const SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
 
 const credentials = {
@@ -83,6 +84,7 @@ module.exports.getAccessToken = async (event) => {
   })
       .then((token) => {
         return {
+          headers,
           statusCode: 200,
           body: JSON.stringify(token),
         };
@@ -90,6 +92,7 @@ module.exports.getAccessToken = async (event) => {
       .catch((err) => {
         console.error(err);
         return {
+          headers,
           statusCode: 500,
           body: JSON.stringify(err),
         };
@@ -129,6 +132,7 @@ module.exports.getAccessToken = async (event) => {
       })  
       .then( results => {
         return {
+            headers,
             statusCode: 200,
             headers: {
               'Access-Control-Allow-Origin': '*',
