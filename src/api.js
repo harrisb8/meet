@@ -70,7 +70,7 @@ export const extractLocations = (events) => {
 const getToken = async (code) => {
   const encodeCode = encodeURIComponent(code);
   const { access_token } = await fetch(
-    `https://oauth2.googleapis.com/token/dev/api/token/${encodeCode}` 
+    'https://harrisb8.github.io/meet/' + '/' + encodeCode  
      )
     .then((res) => {
       return res.json();
