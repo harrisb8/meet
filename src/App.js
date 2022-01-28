@@ -3,12 +3,13 @@ import './App.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvent from './NumberOfEvent';
-import { extractLocations, getEvents } from './api';
+import { checkToken, extractLocations, getAccessToken, getEvents } from './api';
 import "./nprogress.css";
 import {
   ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts';
 import EventGenre from './EventGenre';
+import WelcomeScreen from './WelcomeScreen';
 
 class App extends Component {
   state = {
@@ -22,7 +23,7 @@ class App extends Component {
  // class App extends Component {
     
 
-    componentDidMount() {
+    // componentDidMount() {
       //this.mounted = true;
       //getEvents().then((events) => {
         //if ( this.mounted) {
@@ -74,7 +75,7 @@ class App extends Component {
       })
       return data;
     };
-  }
+  
 
   render() {
     if (this.state.showWelcomeScreen === undefined)

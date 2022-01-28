@@ -2,13 +2,9 @@ import { mockData } from './mock-data';
 import axios from 'axios';
 import NProgress from 'nprogress';
 import WelcomeScreen from './WelcomeScreen';
-import { getEvents, extractLocations, checkToken, getAccessToken } from
-'./api';
 
 
-
-
-const checkToken = async (accessToken) => {
+export const checkToken = async (accessToken) => {
   const result = await fetch(
     `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
   )
@@ -28,7 +24,7 @@ export const getEvents = async () => {
   }
   if (!navigator.onLine) {
     const data = localStorage.getItem("lastEvents");
-    NProgress.done();n
+    NProgress.done();
     // console.log(events);
     return data ? JSON.parse(data).events:[];;
   }
@@ -76,7 +72,7 @@ export const extractLocations = (events) => {
       return accessToken;
   }
 
-const getToken = async (code) => {
+export const getToken = async (code) => {
   const encodeCode = encodeURIComponent(code);
   const { access_token } = await fetch(
     'https://harrisb8.github.io/meet/' + '/' + encodeCode  
@@ -89,7 +85,7 @@ const getToken = async (code) => {
     access_token && localStorage.setItem("access_token", access_token)
 }
 
-  const removeQuery = () => {
+ export  const removeQuery = () => {
     if (window.history.pushState && window.location.pathname) {
       var newurl =
         window.location.protocol +
@@ -102,5 +98,3 @@ const getToken = async (code) => {
        window.history.pushState("", "", newurl);
      }
    };
-
-   export const checkToken = async (accessToken) => {};
