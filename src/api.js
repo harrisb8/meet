@@ -6,10 +6,11 @@ import WelcomeScreen from './WelcomeScreen';
 
 export const checkToken = async (accessToken) => {
   const result = await fetch(
-    `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
+    `https://7ngty425jb.execute-api.eu-central-1.amazonaws.com/dev/api/token/${accessToken}`
+    //`https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
   )
     .then((res) => res.json())
-    .catch((error) => error.json());
+    .catch((error) => error);
 
     return result;
 };
@@ -62,7 +63,7 @@ export const extractLocations = (events) => {
       const code = await seacrchParams.get("code");
       if (!code) {
         const results = await axios.get(
-          "https://accounts.google.com/o/oauth2/auth/api/get-auth-url"
+          "https://7ngty425jb.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url"
         );
         const { authUrl } = results.data;
         return (window.location.href = authUrl);
